@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Pessoas</title>
+</head>
+<body>
+
+<a href="">Voltar para Listagem</a>
+
+<form method="post" action="{% url 'cadastrar_pessoa' %}">
+    {% csrf_token %}
+
+    {{ form.nome }}
+
+    {{ form.idade }}
+
+    <input type="submit" value="Enviar"/>
+
+</form>
+
+
+</body>
+</html>
