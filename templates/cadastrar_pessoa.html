@@ -11,9 +11,7 @@
 <form method="post" action="{% url 'cadastrar_pessoa' %}">
     {% csrf_token %}
 
-    {{ form.nome }}
-
-    {{ form.idade }}
+    {{ form }}
 
     <input type="submit" value="Enviar"/>
 

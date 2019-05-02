@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pessoas.views import listar_pessoas_fbv, ListarPessoasCBV, CadastrarPessoaView
+from pessoas.views import ListarPessoasView, CadastrarPessoaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    path('listar_pessoas_fbv/', listar_pessoas_fbv),
-    path('listar_pessoas_cbv/', ListarPessoasCBV.as_view()),
+
+    path('', ListarPessoasView.as_view()),
+    path('listar_pessoas/', ListarPessoasView.as_view(), name='listar_pessoas'),
 
     path('cadastrar_pessoa/', CadastrarPessoaView.as_view(), name='cadastrar_pessoa'),
 ]

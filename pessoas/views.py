@@ -1,23 +1,17 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 
 
-# FBV
 from pessoas.forms import FormPessoa
+from pessoas.models import Pessoa
 
 
-def listar_pessoas_fbv(request):
-    if request.method == 'GET':
-        return HttpResponse('get')
-    elif request.method == 'POST':
-        return HttpResponse('post')
-
-
-# CBV
-class ListarPessoasCBV(View):
+class ListarPessoasView(View):
     def get(self, request):
-        return render(request, 'listar_pessoas.html', {})
+        pessoas = Pessoa.objects.all()
+        return render(request, 'listar_pessoas.html', {'pessoas': pessoas})
 
     def post(self, request):
         return HttpResponse('post')
@@ -29,5 +23,22 @@ class CadastrarPessoaView(View):
         return render(request, 'cadastrar_pessoa.html', {'form': form})
 
     def post(self, request):
-        # salvar a pessoa no banco
-        return HttpResponse('post')
+
+        form = FormPessoa(request.POST)
+
+        if not form.is_valid():
+            return render(request, 'cadastrar_pessoa.html', {'form': form})
+
+        nome = form.cleaned_data['nome']
+        idade = form.cleaned_data['idade']
+
+        # forma 1
+        # Pessoa.objects.create(nome=nome, idade=idade)
+
+        # forma 2
+        pessoa = Pessoa()
+        pessoa.nome = nome
+        pessoa.idade = idade
+        pessoa.save()
+
+        return redirect(reverse('listar_pessoas'))

@@ -7,5 +7,5 @@ from django import forms
 
 
 class FormPessoa(forms.Form):
-    nome = forms.CharField()
-    idade = forms.IntegerField()
+    nome = forms.CharField(required=False)
+    idade = forms.IntegerField(required=False)
