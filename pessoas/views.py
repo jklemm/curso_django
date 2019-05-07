@@ -42,3 +42,19 @@ class CadastrarPessoaView(View):
         pessoa.save()
 
         return redirect(reverse('listar_pessoas'))
+
+
+class AlterarPessoaView(View):
+    def get(self, request, pessoa_id=None):
+        return HttpResponse('AlterarPessoaView -> get : pessoa_id: {}'.format(pessoa_id))
+
+    def post(self, request):
+        return HttpResponse('AlterarPessoaView -> post')
+
+
+class ExcluirPessoaView(View):
+    def get(self, request, pessoa_id=None):
+        return HttpResponse('ExcluirPessoaView -> get : pessoa_id: {}'.format(pessoa_id))
+
+    def post(self, request):
+        return HttpResponse('ExcluirPessoaView -> post')

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pessoas.apps.PessoasConfig'
+    'pessoas.apps.PessoasConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

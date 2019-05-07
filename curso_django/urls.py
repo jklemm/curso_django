@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pessoas.views import ListarPessoasView, CadastrarPessoaView
+from pessoas.views import ListarPessoasView, CadastrarPessoaView, AlterarPessoaView, ExcluirPessoaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,7 @@ urlpatterns = [
     path('listar_pessoas/', ListarPessoasView.as_view(), name='listar_pessoas'),
 
     path('cadastrar_pessoa/', CadastrarPessoaView.as_view(), name='cadastrar_pessoa'),
+
+    path('alterar_pessoa/<int:pessoa_id>/', AlterarPessoaView.as_view(), name='alterar_pessoa'),
+    path('excluir_pessoa/<int:pessoa_id>/', ExcluirPessoaView.as_view(), name='excluir_pessoa'),
 ]
