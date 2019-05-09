@@ -21,11 +21,8 @@ from pessoas.views import ListarPessoasView, CadastrarPessoaView, AlterarPessoaV
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', ListarPessoasView.as_view()),
-    path('listar_pessoas/', ListarPessoasView.as_view(), name='listar_pessoas'),
-
+    path('', ListarPessoasView.as_view(), name='listar_pessoas'),
     path('cadastrar_pessoa/', CadastrarPessoaView.as_view(), name='cadastrar_pessoa'),
-
     path('alterar_pessoa/<int:pessoa_id>/', AlterarPessoaView.as_view(), name='alterar_pessoa'),
     path('excluir_pessoa/<int:pessoa_id>/', ExcluirPessoaView.as_view(), name='excluir_pessoa'),
 ]
