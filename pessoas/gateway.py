@@ -1,8 +1,3 @@
-# coding: utf-8
-from __future__ import absolute_import
-from __future__ import print_function
-from __future__ import unicode_literals
-
 from datetime import datetime
 
 from pessoas.models import Pessoa
@@ -31,6 +26,7 @@ def alterar_pessoa(pessoa_id, nome, idade):
     pessoa.idade = idade
     pessoa.ultima_alteracao = datetime.now()
     pessoa.save()
+    return pessoa
 
 
 def excluir_pessoa(pessoa_id):
