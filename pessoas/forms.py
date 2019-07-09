@@ -8,4 +8,4 @@ from django import forms
 
 class FormPessoa(forms.Form):
     nome = forms.CharField(required=True)
-    idade = forms.IntegerField(required=True)
+    idade = forms.IntegerField(required=True, min_value=0, max_value=150)
